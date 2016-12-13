@@ -5,6 +5,10 @@
    - name: remove ssh publickey
      shell: ssh-keygen -R {{ inventory_hostname }}
 
+- name: Setup IP Address + Reboot
+  roles:
+   - ipaddr_setup
+
 - name: Setup Raspberry Pi
   hosts: raspi
   sudo: yes

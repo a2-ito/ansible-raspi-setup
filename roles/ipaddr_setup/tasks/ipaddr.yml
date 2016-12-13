@@ -1,0 +1,4 @@
+---
+- name: Set IP Address
+  command: echo {{ groups["raspi"] }}
+

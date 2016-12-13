@@ -1,0 +1,13 @@
+---
+- name : Create Timezone file.
+  copy : content='Asia/Tokyo'
+         dest=/etc/timezone
+         owner=root
+         group=root
+         mode=0644
+         backup={{ backup }}
+  tags: timezone
+
+- name: update timezone
+  shell: dpkg-reconfigure --frontend noninteractive tzdata
+  tags: timezone

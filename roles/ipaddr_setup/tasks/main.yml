@@ -1,0 +1,6 @@
+---
+- include: timezone.yml
+- include: keyboard.yml
+- include: apt-get.yml
+- include: ipaddr.yml
+- include: reboot-wait.yml
