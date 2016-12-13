@@ -1,5 +1,5 @@
 [raspi]
-192.168.1.2
+192.168.11.4
 
 [raspi:vars]
 ansible_ssh_port=22
@@ -7,3 +7,4 @@ ansible_ssh_user=pi
 ansible_ssh_pass=raspberry
 #ansible_sudo_pass=
 backup=yes
+
