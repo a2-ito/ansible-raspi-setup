@@ -1,0 +1,17 @@
+---
+- name: set fstab ShareDisk
+  mount: 
+    name: /mnt/ram 
+    src: //192.168.11.3/BackupDisk/:/mnt/ShareDisk
+    fstype: cifs
+    opts: "guest,uid=apache,gid=apache,iocharset=utf8,rw"
+    state: present
+
+#- name: set fstab BackupDisk
+#  mount: 
+#    name: /mnt/BackupDisk
+#    src: //192.168.11.3/BackupDisk/:/mnt/BackupDisk
+#    fstype: cifs
+#    opts: "guest,uid=apache,gid=apache,iocharset=utf8,rw"
+#    state: present
+

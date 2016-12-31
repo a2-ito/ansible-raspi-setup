@@ -2,3 +2,10 @@
 dbname: wp_user0001
 dbuser: wp_user0001
 dbpassword: wp*password
+
+address: "{{ groups['raspi-static'][0] }}"
+netmask: 255.255.255.0
+network: 192.168.11.0
+broadcast: 192.168.11.255
+gateway: 192.168.11.1
+

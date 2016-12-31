@@ -1,17 +1,41 @@
 ---
-- name: remove Raspberry Pi ssh-publickey
-  hosts: 127.0.0.1
-  tasks:
-   - name: remove ssh publickey
-     shell: ssh-keygen -R {{ inventory_hostname }}
+#- name: remove Raspberry Pi ssh-publickey
+#  hosts: 127.0.0.1
+#  tasks:
+#   - name: remove ssh publickey
+#     shell: ssh-keygen -R {{ inventory_hostname }}
 
-- name: Setup IP Address + Reboot
+
+#- name: setup authorized_keys
+#  hosts: raspi-dhcp
+#  tasks:
+#   - authorized_key:
+#       user: pirate
+#       key: "{{ lookup('file', '/home/apache/.ssh/id_rsa.pub') }}"
+
+- name: Setup SSH key
+  hosts: raspi-dhcp
   roles:
-   - ipaddr_setup
+   - sshkey_setup
+
+#- name: ip check
+#  hosts: raspi-dhcp
+#  tasks:
+#   - debug: var=groups['raspi-static'][0]
 
 - name: Setup Raspberry Pi
-  hosts: raspi
+  hosts: raspi-dhcp
   sudo: yes
-
   roles:
    - setup
+
+- name: boot check
+  hosts: raspi-dhcp
+  roles:
+    - bootcheck
+
+#- name: Check Target Status
+#  hosts: raspi-static
+#  roles:
+#   - check_status
+

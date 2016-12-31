@@ -1,0 +1,7 @@
+---
+- name: reboot raspi
+  command: reboot
+  async: 0
+  poll: 0
+  ignore_errors: true
+

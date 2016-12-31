@@ -1,0 +1,4 @@
+- name: setup authorized_keys
+  authorized_key:
+    user: pirate
+    key: "{{ lookup('file', '/home/apache/.ssh/id_rsa.pub') }}"

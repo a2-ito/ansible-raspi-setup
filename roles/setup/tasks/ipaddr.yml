@@ -1,0 +1,4 @@
+---
+- name: set ip address
+  template: src="eth0.j2" dest="/etc/network/interfaces.d/eth0" owner=root group=root mode=0644
+

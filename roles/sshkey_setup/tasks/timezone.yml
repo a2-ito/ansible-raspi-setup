@@ -5,7 +5,7 @@
          owner=root
          group=root
          mode=0644
-         backup=true
+         backup={{ backup }}
   tags: timezone
 
 - name: update timezone

@@ -1,13 +1,14 @@
 ---
 - name: reboot raspi
-  shell: shutdown -r now
-  tags: reboot
+  command: reboot
+  async: 0
+  poll: 0
+  ignore_errors: true
 
 - name: wait for SSH port down
-  local_action: wait_for host={{ inventory_hostname }} port=22 state=stopped
-  tags: reboot
+  local_action: wait_for host=groups['raspi-dhcp'][0] port=22 state=stopped
+  #local_action: wait_for host=192.168.11.13 state=started delay=30 timeout=300
 
 - name: wait for SSH port up
-  wait_for: host={{ inventory_hostname }} port=22 state=started delay=30
-  delegate_to: 127.0.0.1
-  tags: reboot
+  local_action: wait_for host=groups['raspi-dhcp'][0] port=22 state=started delay=30
+ 
